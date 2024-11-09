@@ -1,0 +1,58 @@
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Información general del usuario</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Nombres:</b> {{ paciente?.persona?.nombres }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Apellidos:</b> {{ paciente?.persona?.apellidos }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Género:</b> {{ paciente?.genero?.nombre }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Documento de identidad:</b> {{ paciente?.persona?.doc_identidad }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Fecha de nacimiento:</b> {{ paciente?.persona?.fec_nacimiento }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Número de teléfono:</b> {{ paciente?.persona?.num_telefono }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Correo electrónico:</b> {{ paciente?.usuario?.email }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Información específica del usuario</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Departamento:</b> {{ paciente?.ubigeo?.departamento }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Provincia:</b> {{ paciente?.ubigeo?.provincia }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Distrito: </b>{{ paciente?.ubigeo?.distrito }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Condición:</b> {{ paciente?.condicion?.nombre }}</p>
+            </div>
+            <div class="col-md-12">
+                <p class="text-justify"><b>- Carrera:</b> {{ paciente?.carrera?.nombre }}</p>
+            </div>
+        </div>
+    </div>
+</body>

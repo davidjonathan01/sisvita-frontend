@@ -1,0 +1,66 @@
+/* Estilos generales */
+body {
+  background-color: #f0f8ff; /* Fondo azul claro */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333; /* Texto color gris oscuro */
+}
+
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.block {
+  background-color: #ffffff; /* Fondo blanco para los bloques */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.block h1, .block h2 {
+  color: #005b96; /* Color azul oscuro para los encabezados */
+  text-align: center;
+}
+
+.block p {
+  margin: 10px 0;
+}
+
+.block-large {
+  padding: 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .container {
+      padding: 15px;
+  }
+  .block {
+      padding: 20px;
+  }
+  .block-large {
+      padding: 30px;
+  }
+}
+
+/* Estilos para bloques divididos */
+.block-split {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.block-split .block {
+  flex: 1;
+}

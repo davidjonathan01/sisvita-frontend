@@ -1,0 +1,84 @@
+.container-fluid {
+  padding: 20px;
+}
+
+mat-grid-tile {
+  background: rgb(30, 139, 175);
+}
+
+.mat-grid-tile-content {
+  font-size: 17px; /* Tamaño de la letra */
+  color: white; /* Color del texto */
+  text-align: center; /* Centra el texto horizontalmente */
+  display: flex; /* Utiliza flexbox para centrar verticalmente */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+}
+.mat-grid-list-space {
+  margin-bottom: 20px; /* Espacio inferior entre el grid y otros elementos */
+}
+
+.modal {
+  display: block; /* Asegura que el modal se muestra */
+  background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+}
+
+.modal-dialog {
+  max-width: 800px; /* Ajusta el ancho del modal */
+  margin: 1.75rem auto; /* Centra el modal verticalmente */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.btn {
+  margin: 5px 0;
+}
+
+
+
+h5.modal-title {
+  font-size: 18px;
+  margin: 0;
+}
+
+button.btn-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #000;
+  opacity: 0.5;
+}
+
+button.btn-close:hover {
+  color: #000;
+  opacity: 0.75;
+}

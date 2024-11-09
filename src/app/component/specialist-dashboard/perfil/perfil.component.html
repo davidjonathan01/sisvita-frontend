@@ -1,0 +1,56 @@
+<body>
+    <div class="container">
+  
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center">Información general del especialista</h2>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Nombres:</b> {{ especialista?.persona?.nombres }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Apellidos:</b> {{ especialista?.persona?.apellidos }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Género:</b> {{ especialista?.persona?.genero?.nombre }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Documento de identidad:</b> {{ especialista?.persona?.doc_identidad }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Fecha de nacimiento:</b> {{ especialista?.persona?.fec_nacimiento }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Número de teléfono:</b> {{ especialista?.persona?.num_telefono }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Correo electrónico:</b> {{ especialista?.usuario?.email }}</p>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center">Información específica del especialista</h2>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Licencia:</b> {{ especialista?.n_licencia }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Especialidad:</b> {{ especialista?.especialidad?.titulo }}</p>
+        </div>
+        <div class="col-md-12">
+            <p class="text-justify"><b>- Especialidad:</b> {{ especialista?.especialidad?.descripcion }}</p>
+        </div>
+        <div class="col-md-12">
+          <p class="text-justify"><b>- Activo:</b> {{ especialista?.activo ? 'Sí' : 'No' }}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  

@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <mat-grid-list cols="1" rowHeight="40:1" class="mat-grid-list-space">
+    <mat-grid-tile><div class="mat-grid-tile-content">Resultados del Paciente</div></mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="filter-container">
+    <label for="estadoFiltro">Seleccione el estado de revisión:</label>
+    <select id="estadoFiltro" class="form-select" [(ngModel)]="estadoSeleccionado" (change)="filtrarResultados()">
+      <option value="">Todos</option>
+      <option *ngFor="let estado of estados" [value]="estado.id_estado">{{ estado.nombre }}</option>
+    </select>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Test</th>
+        <th>Fecha</th>
+        <th>Evaluación</th>
+        <th>Especialista</th>
+        <th>Observación</th>
+        <th>Recomendaciones</th>
+        <th>Invitaciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let resultado of resultadosFiltrados">
+        <td>{{ resultado.evaluacion.test.nombre }}</td>
+        <td>{{ resultado.estado.id_estado === 5 ?  (resultado.fec_interpretacion | date:'dd/MM/yyyy'): (resultado.evaluacion.fec_realizacion | date:'dd/MM/yyyy')}}</td> <!-- Lógica para mostrar la fecha -->
+        <td>
+          <button type="button" class="btn btn-success btn-sm" (click)="mostrarDetalles(resultado, 'evaluacion')">Ver Evaluación</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" (click)="mostrarDetalles(resultado, 'especialista')">Ver Especialista</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-warning btn-sm" (click)="mostrarDetalles(resultado, 'observacion')">Ver Observación</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-light btn-sm" (click)="mostrarDetalles(resultado, 'recomendacion')">Ver Observación</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="mostrarDetalles(resultado, 'invitaciones')">Ver Invitaciones</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal para mostrar detalles -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': mostrarModal}" style="display: block;" *ngIf="mostrarModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-body">
+        <mat-grid-list cols="1" rowHeight="20:1" class="mat-grid-list-space">
+          <mat-grid-tile>
+            <div class="mat-grid-tile-content">{{ modalTitle }}</div>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <ng-container *ngIf="modalType === 'especialista'">
+          <p><strong>Nombres:</strong> {{ modalData.especialista.persona.nombres }}</p>
+          <p><strong>Apellidos:</strong> {{ modalData.especialista.persona.apellidos }}</p>
+          <p><strong>Documento de Identidad:</strong> {{ modalData.especialista.persona.doc_identidad }}</p>
+          <p><strong>Género:</strong> {{ modalData.especialista.persona.genero.nombre }}</p>
+          <p><strong>Número de Licencia:</strong> {{ modalData.especialista.n_licencia }}</p>
+          <p><strong>Especialidad:</strong> {{ modalData.especialista.especialidad.titulo }}</p>
+        </ng-container>
+        <ng-container *ngIf="modalType === 'evaluacion'">
+          <p><strong>Test:</strong> {{ modalData.evaluacion.test.nombre }}</p>
+          <p><strong>N° preguntas:</strong> {{ modalData.evaluacion.test.n_preguntas }}</p>
+          <p><strong>Versión:</strong> {{ modalData.evaluacion.test.n_version }}</p>
+          <p><strong>Puntaje:</strong> {{ modalData.evaluacion.puntaje }}</p>
+          <p><strong>Fecha de realización:</strong> {{ modalData.evaluacion.fec_realizacion  | date:'dd/MM/yyyy'}}</p>
+          <p><strong>Nivel de ansiedad:</strong> {{ modalData.escala.nombre }}</p>
+        </ng-container>
+        <ng-container *ngIf="modalType === 'observacion'">
+          <p><strong>Fecha:</strong> {{ modalData.fec_interpretacion  | date:'dd/MM/yyyy'}}</p>
+          <p><strong>Interpretación del especialista:</strong> {{ modalData.observacion }}</p>
+        </ng-container>
+        <ng-container *ngIf="modalType === 'recomendacion'">
+          <p><strong>Fecha:</strong> {{ modalData.fec_interpretacion  | date:'dd/MM/yyyy'}}</p>
+          <p><strong>Recomendaciones del especialista:</strong> {{ modalData.recomendacion }}</p>
+        </ng-container>
+
+        <ng-container *ngIf="modalType === 'invitaciones'">
+          <div *ngIf="cargandoInvitaciones">Cargando invitaciones...</div>
+          <div *ngIf="!cargandoInvitaciones">
+            <div *ngIf="invitaciones.length > 0; else noInvitaciones">
+              <div *ngFor="let invitacion of invitaciones">
+                <p><strong>Test:</strong> {{ invitacion.test.nombre }}</p>
+                <p><strong>Fecha de invitación:</strong> {{ invitacion.fec_invitacion | date }}</p>
+              </div>
+            </div>
+            <ng-template #noInvitaciones>
+              <p>Sin Invitaciones</p>
+            </ng-template>
+          </div>
+        </ng-container>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-sm" (click)="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
